@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+void main()
+{
+  setlocale(LC_ALL, "rus");
+  char z[21]="";
+	cout << "Введите выражение до 20 скобок:" << endl;
+	cin >> z;
+	int x=0;	int c=0;	int v=0;	int b=0;	int j=0;
+
+	while
+		((z[j]!=NULL)&&(x!=-1)&&(v!=-1)&&(c!=-1)&&(b!=-1))
+	{
+		if(z[j]=='('||')'||'['||']'||'{'||'}'||'<'||'>')
+		{
+			if((z[j]=='(')) {x++; j++;}
+			if((z[j]=='[')) {v++; j++;}
+			if((z[j]=='{')) {b++; j++;}
+			if((z[j]=='<')) {c++; j++;}
+		if(z[j]==')') {x--; j++;}
+		if(z[j]==']') {v--; j++;}
+		if(z[j]=='>') {c--; j++;}
+		if(z[j]=='}') {b--; j++;}
+		}
+		else j++;
+	}
+	if ((x==0)&&(v==0)&&(c==0)&&(b==0)) cout << "Correct!";
+
+	if ((x!=0)||(v!=0)||(c!=0)||(b!=0)) cout << "Wrong!";
+
+	cin.get();
+	cin.get();
+}
