@@ -1,0 +1,129 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class HardDisk // класс жесткий деск
+{
+public:
+  // Функции
+  void screen();
+
+	// Методы
+	string getModel() const;
+	int    getCost() const;
+	int    getSpace()  const;
+	void   setModel(string);
+	void   setCost(int);
+	void   setSpace(int) ;
+	bool   Equals(HardDisk&);
+
+	// Кострукторы, деструктоы
+	HardDisk();
+	HardDisk(int);
+	HardDisk(string, int, int);
+	HardDisk(HardDisk&);
+
+private:
+	string _model; // модель 
+	int    _Space;  // обьем
+	int    _Cost; // стоимость
+};
+HardDisk::HardDisk()
+{
+	_model = "Seagate s3";
+	_Space  = 750;
+	_Cost = 450;
+}
+HardDisk::HardDisk(int)
+{
+	cout << "Модель HDD: ";
+	cin  >> _model;
+	cout << "Обьем: ";
+	cin  >> _Space;
+	cout << "Стоимость: ";
+	cin  >> _Cost;
+}
+HardDisk::HardDisk(string model, int Space, int Cost)
+{
+	_model = model;
+	_Space  = Space;
+	_Cost = Cost;
+}
+HardDisk::HardDisk(HardDisk &val)
+{
+	_model = val._model;
+	_Space  = val._Space;
+	_Cost = val._Cost;
+}
+
+string HardDisk::getModel() const
+{
+	return _model;
+}
+int    HardDisk::getCost() const 
+{
+	return _Cost;
+}
+int    HardDisk::getSpace()  const
+{
+	return _Space;
+}
+void   HardDisk::setModel(string val)
+{
+	_model = val;
+}
+void   HardDisk::setCost(int val)
+{
+	_Cost = val;
+}
+void   HardDisk::setSpace(int val)
+{
+	_Space = val;
+}
+bool   HardDisk::Equals(HardDisk &val)
+{
+	return(_model == val._model && _Space == val._Space && _Cost == val._Cost);
+}
+
+void HardDisk::screen()
+{
+	cout << "Модель HDD:  " << _model 
+		 << "Обьем:      " << _Space 
+		 << "Стоимость: " << _Cost << endl;
+}
+
+void main()
+{
+	setlocale(LC_ALL,"russian");
+
+	// ex.2
+	HardDisk HardDisk1,
+		HardDisk2(0),
+		HardDisk3("Kingston",1500,870),
+		HardDisk4(HardDisk3);
+
+	// ex.3
+	HardDisk1.setModel("gigabyte");
+	HardDisk1.setSpace(500);
+	HardDisk1.setCost(270);
+
+	// ex.4
+	HardDisk4 = HardDisk(0);
+
+	// ex.5 
+	HardDisk1.screen();
+	HardDisk2.screen();
+	HardDisk3.screen();
+	HardDisk4.screen();
+
+	// ex.6
+	if(HardDisk1.Equals(HardDisk2)){
+		cout << "Объекты равны.\n";
+	}else{
+		cout << "Объекты разные.\n";
+	}
+
+	// ex.7
+
+	system("pause");
+}
