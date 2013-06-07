@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+void main()
+
+{
+  const int MAX=20;
+  unsigned short x[MAX]={1,2,3,4,5,6,7,8,12,13,14,15,16,17,21,22,23,24,25};
+	unsigned short a=9,b=18;
+	int y=0;
+
+	cout << "to [a;b]:\t";
+
+	while(x[y]!=NULL)
+
+	{
+		if(y<=MAX) {if(x[y]<a) {cout << x[y] << " ";}} y++;
+	}
+
+	y=0;
+	cout << endl;
+	cout << "between [a;b]:\t";
+
+	while(x[y]!=NULL)
+
+	{
+		if(y<=MAX) {if((x[y]>=a)&&(x[y]<=b)) {cout << x[y] << " ";}} y++;
+	}
+
+	y=0;
+	cout << endl;
+	cout << "after [a;b]\t";
+
+	while(x[y]!=NULL)
+
+	{
+		if(y<MAX) {if(x[y]>b) {cout << x[y] << " ";}} y++;
+	}
+
+	cin.get();
+}
